@@ -10,6 +10,8 @@ RUN dotnet restore
 COPY ./ ./
 RUN dotnet build
 RUN dotnet publish -c Release -o out
+EXPOSE 5000 7000
+ENV ASPNETCORE_URLS=http://*:5000
 
 # build runtime image
 FROM microsoft/dotnet:2.2-aspnetcore-runtime
